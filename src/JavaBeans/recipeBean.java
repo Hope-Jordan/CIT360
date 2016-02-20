@@ -1,4 +1,6 @@
-package JSON;import java.io.Serializable;
+package JavaBeans;
+
+import java.io.Serializable;
 
 /**
  * Created by JordanHope on 2/13/2016.
