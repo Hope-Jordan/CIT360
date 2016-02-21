@@ -13,3 +13,4 @@ out/
 JSONSandbox/.idea/.name
 *.xml
 *.iml
+*.tmp
