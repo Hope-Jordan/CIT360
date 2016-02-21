@@ -34,6 +34,7 @@ public class TreeSetSandbox {
 
         System.out.println("TreeSet of strings");
         System.out.println(set);
+        System.out.println(set.contains("2.1"));
 
 
         TreeSet setB = new TreeSet();
