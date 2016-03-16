@@ -14,26 +14,35 @@ public class recipeControl {
         this.model = model;
     }
 
-    public void register() {
-        int userCount = view.userCount();
+    public void hibernateExample() {
+        model.addUser();
+        model.showAllUsers();
+        model.modifyUser();
+        model.showAllUsers();
+        model.deleteAddedUsers();
+        model.showAllUsers();
 
-        for (int i = 0; i < userCount; i++) {
-
-            String username = view.getUsername();
-            String password = view.getPassword();
-
-            userBean newUser = new userBean(username, password);
-
-            if (!model.checkForUser(newUser)) {
-                model.addUser(newUser);
-                System.out.println("Registered Successfully");
-                view.displayUsernameAndPassword();
-            } else {
-                System.out.println("That username already exists, try another username");
-                i--;
-            }
-        }
-
-        model.printSet();
     }
+//    public void register() {
+//        int userCount = view.userCount();
+//
+//        for (int i = 0; i < userCount; i++) {
+//
+//            String username = view.getUsername();
+//            String password = view.getPassword();
+//
+//            userBean newUser = new userBean(username, password);
+//
+//            if (!model.checkForUser(newUser)) {
+//                model.addUser(newUser);
+//                System.out.println("Registered Successfully");
+//                view.displayUsernameAndPassword();
+//            } else {
+//                System.out.println("That username already exists, try another username");
+//                i--;
+//            }
+//        }
+//
+//        model.printSet();
+//    }
 }
