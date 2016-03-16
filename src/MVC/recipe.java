@@ -8,7 +8,8 @@ public class recipe {
         recipeView view = new recipeView();
         recipeModel model = new recipeModel();
         recipeControl control = new recipeControl(view, model);
-        control.register();
+        control.hibernateExample();
+        //control.register();
     }
 }
 
