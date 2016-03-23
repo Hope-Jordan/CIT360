@@ -1,5 +1,6 @@
 package Sockets;
 
+import MVC.Controller;
 import org.quickconnectfamily.json.JSONInputStream;
 import org.quickconnectfamily.json.JSONOutputStream;
 
@@ -16,12 +17,14 @@ import java.util.concurrent.Executors;
 public class Server {
 
     private Executor theExecutor = Executors.newCachedThreadPool();
+    private Controller theController = new Controller();
 
     public static void main(String[] args) {
             Server theServer = new Server();
             theServer.start();
         }
         private void start(){
+            theController.mapCommand("Speak", new SpeakHandler());
             try {
                 //a socket opened on the specified port
                 //Port number does have to match between the server and the Client. I'll be using 8006.
@@ -41,12 +44,11 @@ public class Server {
                             System.out.println("The Client has yet to make a request");
                             //this is taking the json from the client and insert it into a hashmap
                             HashMap aRequest = (HashMap) inFromClient.readObject();
-                            //confirming the message from the client
-                            System.out.println("Just got: " + aRequest.get("message") + " from client");
-                            //replacing the command "speak" with the done command to send the string back to the client
-                            aRequest.put("command", "Done");
-                            System.out.println("Responding to the Client");
-                            outToClient.writeObject(aRequest);
+                            aRequest.put("toClient", outToClient);
+
+                            String aCommand = (String) aRequest.get("command");
+                            theController.handleRequest(aCommand, aRequest);
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
