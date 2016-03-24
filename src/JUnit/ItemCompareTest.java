@@ -25,5 +25,14 @@ public class ItemCompareTest {
         itemCompareTest.addProduct(one);
         int numProducts = itemCompareTest.products.size();
         assertEquals(1, numProducts);
+
+        itemCompareTest.addProduct(two);
+        itemCompareTest.addProduct(three);
+        itemCompareTest.addProduct(four);
+        assertEquals(4, numProducts);
+
+        //this should fail
+        assertEquals(3, numProducts);
+
     }
 }
