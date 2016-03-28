@@ -15,3 +15,4 @@ JSONSandbox/.idea/.name
 *.iml
 *.tmp
 lib/
+*.~vsdx
